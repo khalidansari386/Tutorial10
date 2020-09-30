@@ -1,0 +1,16 @@
+{
+	"formulas":[
+		{
+			"formula": "Linear Motion",
+			"url": "https://en.wikipedia.org/wiki/Linear_motion"
+		},
+		{
+			"formula": "Projectile Motion",
+			"url": "https://en.wikipedia.org/wiki/Projectile_motion"
+		},
+		{
+			"formula": "Force",
+			"url": "https://en.wikipedia.org/wiki/Force"
+		}
+	]
+}
