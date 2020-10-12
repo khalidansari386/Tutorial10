@@ -1,4 +1,4 @@
-package com.example.tutorial10;
+package com.rku.tutorial10;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -18,7 +18,7 @@ public class CustomAdapter extends BaseAdapter {
 
     public CustomAdapter(Context context, JSONArray jsonArray) {
         this.context = context;
-        this.jsonArray = jsonArray;
+        this.jsonArray = MyUtil.jsonArray;
     }
 
     @Override
@@ -28,7 +28,6 @@ public class CustomAdapter extends BaseAdapter {
 
     @Override
     public Object getItem(int position) {
-
         return null;
     }
 
@@ -39,22 +38,37 @@ public class CustomAdapter extends BaseAdapter {
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        if (convertView == null){
-            convertView = LayoutInflater.from(context).inflate(R.layout.listitem,parent,false);
+        if (convertView == null) {
+            convertView = LayoutInflater.from(context).inflate(R.layout.list_item, parent, false);
         }
 
+       
         TextView formula = (TextView) convertView.findViewById(R.id.txtFormula);
         TextView url = (TextView) convertView.findViewById(R.id.txtURL);
-
         try {
             JSONObject jsonObject = jsonArray.getJSONObject(position);
-            formula.setText(jsonObject.getString("id"));
-            url.setText(jsonObject.getString("name"));
+
+/* ----------- Using Assets Folder this method ----------- */
+
+           /* Website.setText(jsonObject.getString("Website"));
+            Url.setText(jsonObject.getString("Url"));*/
+
+/* ----------- End Using Assets Folder this method ----------- */
+
+/* ----------- Using Internet this method ----------- */
+
+            formula.setText(jsonObject.getString("name"));
+            //Url.setText(jsonObject.getString("city"));
+
+            JSONObject addObj = jsonObject.getJSONObject("address");
+            Url.setText(addObj.getString("city"));
+
+/* ----------- End Using Internet this method ----------- */
         } catch (JSONException e) {
             e.printStackTrace();
         }
 
-
         return convertView;
     }
 }
+
